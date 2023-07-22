@@ -24,56 +24,55 @@ Esta solución informática sirve registrar los libros de una libreriría. Este 
 - IDE - Visual Studio Code v1.78.2
 
 #### Estructura del Programa
-``` Registro
-    └──Petición-datos
-        ├── Buscar-Libros
-        │   └── Petición-datos
-        │        └── Mostrar-resultados
-        |             └── Mostrar-libro
-        |                 ├── Modificar-libro
-        |                 │   └── Petición-datos
-        |                 │       └── Confirmar-modificación
-        |                 └── Eliminar-libro
-        |                     └── Confirmar-eliminación
-        ├── Ingresar-libro
-        │   └── Petición-datos
-        │       └── Mostrar-libro
-        |           ├── Modificar-libro
-        |           │   └── Petición-datos
-        |           │       └── Confirmar-modificación
-        |           └── Eliminar-libro
-        |               └── Confirmar-eliminación
-        ├── Reposiciónes-Necesarias
-        │   └── Mostrar-resultados
-        |       └──  Mostrar-libro
-        |           ├── Modificar-libro
-        |           │   └── Petición-datos
-        |           │       └── Confirmar-modificación
-        |           └── Eliminar-libro
-        |               └── Confirmar-eliminación
-        ├── Modificar-libro
-        │   └── Petición-datos
-        │       └── Confirmar-modificación
-        └── Eliminar-libro
-        |    └── Petición-datos
-        |        └── Confirmar-eliminación
-        └── Salir
+``` 
+Registro
+└──Petición-datos
+    ├── Buscar-Libros
+    │   └── Petición-datos
+    │        └── Mostrar-resultados
+    |             └── Mostrar-libro
+    |                 ├── Modificar-libro
+    |                 │   └── Petición-datos
+    |                 │       └── Confirmar-modificación
+    |                 └── Eliminar-libro
+    |                     └── Confirmar-eliminación
+    ├── Ingresar-libro
+    │   └── Petición-datos
+    │       └── Mostrar-libro
+    |           ├── Modificar-libro
+    |           │   └── Petición-datos
+    |           │       └── Confirmar-modificación
+    |           └── Eliminar-libro
+    |               └── Confirmar-eliminación
+    ├── Reposiciónes-Necesarias
+    │   └── Mostrar-resultados
+    |       └──  Mostrar-libro
+    |           ├── Modificar-libro
+    |           │   └── Petición-datos
+    |           │       └── Confirmar-modificación
+    |           └── Eliminar-libro
+    |               └── Confirmar-eliminación
+    ├── Modificar-libro
+    │   └── Petición-datos
+    │       └── Confirmar-modificación
+    └── Eliminar-libro
+    |    └── Petición-datos
+    |        └── Confirmar-eliminación
+    └── Salir
 ```
 
- - #### TESTS
-    Hasta el momento, hay una sola suite de test (proyecto2.test.js). La misma, se ejecuta por medio del comando ***npm run test***. Para que dicho test pase correctamente, se debe tener una base de datos en MongoDB llamada *muebleria* que tenga una collection denominada *muebles* y esta, contenga los documentos de los muebles. Además, se debe tener el servidor HTTP ejecutandose en otra terminal de Visual Studio Code. Esto se hace con ***npm run start***.
-
- - #### ERRORES & FORMATOS
-    La comprobación de errores y formatos se ejecuta por medio del comando ***npm run eslint***. se hace por medio de Eslint. Para visualizar los errores en tiempo de escritura, se debe tener instalada la extensión de **Eslint** en Visual Studio Code.
-    
+- #### aclaraciones
+*Siempre que se termina un proceso con un libro se mostrará el libro a excepción del método Eliminar.*   
 ---
-### MÓDULO DE MUEBLES
+### Desarrollo del diagrama de flujo
 
-Este módulo permite la gestión de muebles. El mismo, ofrece funciones para agregar, modificar, borrar o leer el registro de un mueble. Además, permite visualizar reportes filtrados por diferentes criterios de búsqueda.
+AQUI VA EL DIAGRAMA
 
-#### Método GET:
+# Desarrollo de las pruebas de escritorio
+
+- # Prueba de escritorio : BUSCAR LIBRO
 - Request:
-  - Parámetros opcionales de tipo QUERY:
+  - Parámetros opcionales de :
     - categoria=Oficina  *(tipo: string. Trae los muebles de una misma categoría)* 
     - precio_gte=500.00  *(tipo: decimal. Trae los muebles que tienen un precio mayor o igual a $500)* 
     - precio_lte=400.00  *(tipo: decimal. Trae los muebles que tienen un precio menor o igual a $400)* 
@@ -92,8 +91,9 @@ Este módulo permite la gestión de muebles. El mismo, ofrece funciones para agr
   - Código HTTP: **200** *payload: muebles*
   - Código HTTP: **500** *message: Se ha generado un error en el servidor*
 
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="121px" height="391px" viewBox="-0.5 -0.5 121 391"><defs/><g><ellipse cx="60" cy="30" rx="60" ry="30" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/><g transform="translate(-0.5 -0.5)"><switch><foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;"><div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 118px; height: 1px; padding-top: 30px; margin-left: 1px;"><div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;"><div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;"><font style="font-size: 15px;">Inicio/ Crear biblioteca</font></div></div></div></foreignObject><text x="60" y="34" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">Inicio/ Crear biblio...</text></switch></g><rect x="0" y="330" width="120" height="60" rx="9" ry="9" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/></g><switch><g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/><a transform="translate(0,-5)" xlink:href="https://www.drawio.com/doc/faq/svg-export-text-problems" target="_blank"><text text-anchor="middle" font-size="10px" x="50%" y="100%">Text is not SVG - cannot display</text></a></switch></svg>
 
-#### Método GET - Específico:
+- ## Prueba de escritorio :
 - Request:
   - Parámetro obligatorio de tipo URL:
     - 9 *(tipo: integer. Indica el código del mueble que se requiere obtener)*
@@ -112,7 +112,7 @@ Este módulo permite la gestión de muebles. El mismo, ofrece funciones para agr
   - Código HTTP: **500** *message: Se ha generado un error en el servidor*
 
 
-#### Método POST:
+- ## Prueba de escritorio :
 - Request:
   - Parámetros requeridos del BODY:
     - nombre=Biblioteca de madera deluxe *(tipo: string. Establece el valor del nombre)* 
@@ -125,7 +125,7 @@ Este módulo permite la gestión de muebles. El mismo, ofrece funciones para agr
 - Nota: *Los valores indicados en el ejemplo, son datos esperados en los tests.*
 
 
-#### Método PUT:
+- ## Prueba de escritorio :
 - Request:
   - Parámetro obligatorio de tipo URL:
     - 16 *(tipo: integer. Indica el código del mueble que se requiere modificar)*
@@ -141,7 +141,7 @@ Este módulo permite la gestión de muebles. El mismo, ofrece funciones para agr
 - Nota: *Los valores indicados en el ejemplo, son datos esperados en los tests.*
 
 
-#### Método DELETE:
+- ## Prueba de escritorio :
 - Request:
   - Parámetro obligatorio de tipo URL:
     - 16 *(tipo: integer. Indica el código del mueble que se requiere eliminar)*
