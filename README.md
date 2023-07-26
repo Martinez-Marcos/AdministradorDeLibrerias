@@ -72,12 +72,12 @@ Siempre que se termina un proceso con un libro se mostrará el libro a excepció
 # Desarrollo de las pruebas de escritorio
 
 **Prueba de escritorio : S.C.B.**
-- Request:
-  - Parámetros opcionales de :
-    - categoria=Oficina  *(tipo: string. Trae los muebles de una misma categoría)* 
-    - precio_gte=500.00  *(tipo: decimal. Trae los muebles que tienen un precio mayor o igual a $500)* 
-    - precio_lte=400.00  *(tipo: decimal. Trae los muebles que tienen un precio menor o igual a $400)* 
-- Respuesta:
+- :
+  - Parámetros :
+    - 
+    - 
+    - 
+- :
     ``` 
     ```
   - 
