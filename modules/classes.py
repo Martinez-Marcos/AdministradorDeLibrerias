@@ -38,11 +38,8 @@ class Book:
     def condition(self, condition):
         self.__condition = condition
     
-    def replacement(self):
-        return self.condition == "Bad"
-    
     def __str__(self) -> str:
-        return {"id": {self.__id}, "title": {self.__title}, "author": {self.__author}, "condition": {self.__condition}}
+        return f"Titulo: {self.__title} Autor {self.__author} Condicion: {self.__condition} Id: {self.__id}"
 
 class Library:
     def __init__ (self, name, location):
@@ -77,8 +74,8 @@ class Library:
     def add_book(self, book):
         self.__books.append(book)
     
-    def remove_books(self, book):
+    def remove_book(self, book):
         self.__books.remove(book)
     
     def __str__(self):
-        return {"name": {self.name}, "location": {self.location}, "books": {self.__books}}
+        return f"Biblioteca {self.name} de {self.location}"
