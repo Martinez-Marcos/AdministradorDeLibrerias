@@ -293,7 +293,7 @@ def show_menu(op, your_library):
 
         op = input().strip()
 
-        while not op or op not in [str(numero) for numero in range(1,7)]:
+        while not op or op not in [str(numero) for numero in range(1,8)]:
             op = input().strip()
         return int(op)
     

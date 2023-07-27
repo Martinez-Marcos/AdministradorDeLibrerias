@@ -7,7 +7,6 @@ from modules import classes as c
 
 def main():
     # Define Variable y constantes
-    exit = False
     op = {
         "Ver libros": 1,
         "Buscar libro/s": 2,
@@ -33,7 +32,7 @@ def main():
     f.wait_secons(1)
 
     # Ingresa a Menú
-    while exit != True:
+    while True:
         opcion = f.show_menu(op, your_library)
 
         if (opcion == op["Ver libros"]):
@@ -61,7 +60,7 @@ def main():
             f.search_for_id("eliminar", your_library)
 
         elif (opcion == op['Salir']):
-            exit = True
+            break
         
         else:
             print("Esa opción no esta disponible")
