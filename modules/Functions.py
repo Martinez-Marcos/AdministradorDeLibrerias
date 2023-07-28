@@ -153,6 +153,7 @@ def register_book(your_library):
         #menú para continuar
         print(f"\t\tBiblioteca {your_library.name}")
         print("\tRegistrar libro")
+        print(f"Id del ultimo libro agregado: {id}\n(Se recomienda estampar o adjuntar en el libro físico de alguna manera)\n")
         print("1- Ingresar otro libro \n2- Mostrar libros agregados\n3-Menú principal")
         op = input()
 
@@ -185,7 +186,7 @@ def search_books(filters, your_library):
             books.append(book)
     elif filters == "replacement":
         for book in your_library.books:
-            if book.condition == filters["condition": "Mal"]:
+            if book.condition == "Mal":
                 books.append(book)
     elif filters["title"] and filters["author"]:
         for book in your_library.books:

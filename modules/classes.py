@@ -39,7 +39,7 @@ class Book:
         self.__condition = condition
     
     def __str__(self) -> str:
-        return f"Titulo: {self.__title} Autor {self.__author} Condicion: {self.__condition} Id: {self.__id}"
+        return f"Titulo: {self.__title} Autor: {self.__author} Condicion: {self.__condition} Id: {self.__id}"
 
 class Library:
     def __init__ (self, name, location):
