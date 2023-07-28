@@ -42,7 +42,7 @@ def main():
             filters = f.add_filters(your_library)
 
             if filters and filters["id"]:
-                f.search_for_id(filters["id"], your_library)
+                f.search_for_id(filters["id"], your_library,False)
             elif filters and (filters["author"].strip() or filters["title"].strip()):
                 f.search_books(filters, your_library)
 
@@ -50,14 +50,13 @@ def main():
             f.register_book(your_library)
 
         elif (opcion == op["Reposiciones necesarias"]):
-            filters= {"condition":"Mal"}
-            f.search_books(filters, your_library)
+            f.search_books("replacement", your_library)
 
         elif (opcion == op['Modificar libro']):
-            f.search_for_id("modificar", your_library)
+            f.search_for_id(False, your_library, f.modify_book)
 
         elif (opcion == op['Eliminar libro']):
-            f.search_for_id("eliminar", your_library)
+            f.search_for_id(False, your_library, f.delete_book)
 
         elif (opcion == op['Salir']):
             break

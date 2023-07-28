@@ -49,15 +49,15 @@ def modify_book(book, your_library):
         print("\tModificar Libro:")
         
         print(f"Titulo anterior: {book.title}")
-        new_title = input("Nuevo titulo: ")
+        new_title = input("\nNuevo titulo: ")
         while not new_title:  new_title = input()
 
-        print(f"Autor anterior: {book.author}")
-        new_author = input("Nuevo autor: ")
+        print(f"\nAutor anterior: {book.author}")
+        new_author = input("\nNuevo autor: ")
         while not new_author:  new_author = input()
 
-        print(f"Condición anterior: {book.condition}")
-        print("Seleccione nueva condición:\n1- Nuevo\n2- Bien\n3- Mal")
+        print(f"\nCondición anterior: {book.condition}")
+        print("\nSeleccione nueva condición:\n1- Nuevo\n2- Bien\n3- Mal")
         new_condition = input() 
         
         while not new_condition or new_condition not in ["1","2","3"]:
@@ -162,7 +162,7 @@ def register_book(your_library):
 
         if op == 1:
             continue
-        if op == 2:
+        elif op == 2:
             clear_window()
             print("\t\tMostrando libros agregados...")
             wait_secons(1)             
@@ -183,9 +183,9 @@ def search_books(filters, your_library):
     if filters == "all":
         for book in your_library.books:
             books.append(book)
-    elif filters["condition"]:
+    elif filters == "replacement":
         for book in your_library.books:
-            if book.condition == filters["condition"]:
+            if book.condition == filters["condition": "Mal"]:
                 books.append(book)
     elif filters["title"] and filters["author"]:
         for book in your_library.books:
@@ -205,25 +205,20 @@ def search_books(filters, your_library):
     return False
 
 #BUSCAR POR ID
-def search_for_id(id, your_library):
+def search_for_id(id, your_library, action):
+    book = ""
     
     if len(your_library.books) == 0:
         clear_window()
         print("\tAun no tienes libros.")
         wait_secons(2)
         return False
-    
-    clear_window()
-    
-    action = search_for_id
-    if id == "modificar": action = modify_book; id = ""
-    if id == "eliminar": action = delete_book; id = ""
 
-    if not id: 
+    clear_window()
+
+    if action: 
         print(f"\t\tBiblioteca {your_library.name}")
         print("\tBuscar libro/s:")
-        id = input("ID: ").strip()
-    
         while not id :
             id = input("ID: ").strip()
         
@@ -234,20 +229,16 @@ def search_for_id(id, your_library):
             except:
                 print("id debe ser un numero")
                 id = input("ID: ").strip()
-        
-        book = ""
-        for book in your_library.books:
-            if book.id == id:
-                book = book
-                break
-        action(book, your_library)
-        return False
 
-    book = ""
     for book in your_library.books:
         if book.id == id:
             book = book
             break
+
+    if action:
+        action(book, your_library)
+        return False
+
     if book:
         show_book(book, your_library)
     else:
@@ -303,14 +294,13 @@ def show_menu(op, your_library):
     
 #MOSTRAR LIBROS
 def show_result_menu(results_search, your_library):
-    if len(results_search) == 1:
-        show_book(results_search[0], your_library)
-        return False
     clear_window()
     print(f"\t\tBiblioteca {your_library.name}")
-    print(f"Seleccione un libro si desea modificar:")
+    print(f"Seleccione una opcion:")
+
     for i, book in enumerate(results_search):
         print(f"{i+1}- {book}")
+
     print(f"{len(results_search)+1}- Menú principal")
     op = input()
     
@@ -321,7 +311,7 @@ def show_result_menu(results_search, your_library):
     if op == len(results_search)+1:
         return False
     else:
-        modify_book(results_search[op-1], your_library)
+        show_book(results_search[op-1], your_library)
         return False
 
 #AGREGAR FILTROS    
