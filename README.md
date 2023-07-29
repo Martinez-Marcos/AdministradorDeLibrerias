@@ -8,15 +8,32 @@ A petición de muchos clientes en cuanto a su necesidad de poder controlar sus l
 
 # Análisis y solución:
 Hemos realizado un análisis de lo necesario dentro del programa (acciones posibles) a saber:
-[1] Registrar biblioteca [2] Buscar libro [3] Ingresar Nuevo [4] Ver reposiciones necesarias [5] Modificar libro [6] ELiminar libro. Cada libro tendra un Identificador Único a pesar de tener libros repetidos. Se debe proporcionar el ID del libro al crearlo, junto a sus pertinentes datos, ya que se recomienda estampar de alguna manera en el libro físico.
+[1] Registrar biblioteca 
+[2] Buscar libro 
+[3] Ingresar Nuevo 
+[4] Ver reposiciones necesarias 
+[5] Modificar libro 
+[6] ELiminar libro. 
+Cada libro tendra un Identificador Único a pesar de tener libros repetidos. Se debe proporcionar el ID del libro al crearlo, junto a sus pertinentes datos, ya que se recomienda estampar de alguna manera en el libro físico.
 
 #### Especificaciones
-Esta solución informática sirve registrar los libros de una libreriría. Este programa fue diseñado y construido utilizando los concepto de Programación orientada a objetos, clase, Herencia, Funciones, Ciclos, Bucles, Entrada y control de datos, además, implementa buenas prácticas de programación.
+Esta solución informática sirve registrar los libros de una libreriría. Este programa fue diseñado y construido utilizando los concepto de:
+- Programación orientada a Objetos 
+- Encapsulamiento 
+- Clases 
+- Funciones 
+- Ciclos 
+- Bucles
+- Listas
+- Entrada de datos y control de datos
+- Implementación de buenas prácticas de programación.
 
 #### Especificaciones técnicas
-- Variable de guardado: allBooks
-- Tipo de variable: Lista
-- Tipo de variable libro: Objeto
+- Variables de guardado:
+  - your_library = Datos de la biblioteca
+  - your_library_books = Libros de esa biblioteca
+- Tipo de variable your_library: Class
+- Tipo de variable your_library_books: List
 - Interface: Terminal/Interprete de commando
 
 #### Requerimientos
@@ -26,48 +43,38 @@ Esta solución informática sirve registrar los libros de una libreriría. Este 
 
 #### Estructura del Programa
 ``` 
-Registro
+Registro de biblioteca
 └──Petición-datos
-    ├── Buscar-Libros
-    │   └── Petición-datos
-    │        └── Mostrar-resultados
-    |             └── Mostrar-libro
-    |                 ├── Modificar-libro
-    |                 │   └── Petición-datos
-    |                 │       └── Confirmar-modificación
-    |                 └── Eliminar-libro
-    |                     └── Confirmar-eliminación
-    ├── Ingresar-libro
-    │   └── Petición-datos
-    │       └── Mostrar-libro
-    |           ├── Modificar-libro
-    |           │   └── Petición-datos
-    |           │       └── Confirmar-modificación
-    |           └── Eliminar-libro
-    |               └── Confirmar-eliminación
-    ├── Reposiciónes-Necesarias
-    │   └── Mostrar-resultados
-    |       └──  Mostrar-libro
-    |           ├── Modificar-libro
-    |           │   └── Petición-datos
-    |           │       └── Confirmar-modificación
-    |           └── Eliminar-libro
-    |               └── Confirmar-eliminación
-    ├── Modificar-libro
-    │   └── Petición-datos
-    │       └── Confirmar-modificación
-    └── Eliminar-libro
-    |    └── Petición-datos
-    |        └── Confirmar-eliminación
-    └── Salir
+    └──Ingreso al menú
+        ├── Buscar-Libros
+        │   └── Petición-datos
+        │        └── Mostrar-resultados
+        |             └── Mostrar-libro
+        |                 └── Modificar-libro
+        |                     └── Petición-datos
+        ├── Ingresar-libro
+        │   └── Petición-datos
+        │       └── Mostrar-libro
+        |           └── Modificar-libro
+        |               └── Petición-datos
+        ├── Reposiciónes-Necesarias
+        │   └── Mostrar-resultados
+        |       └──  Mostrar-libro
+        |           └── Modificar-libro
+        |               └── Petición-datos
+        ├── Modificar-libro
+        │   └── Petición-datos
+        └── Eliminar-libro
+        |    └── Petición-datos
+        └── Salir
 ```
 
 # Aclaraciones
 Siempre que se termina un proceso con un libro se mostrará el libro a excepción del método Eliminar.   
 ---
-### Diagrama de flujo función main
+### Diagrama de flujo del programa
 
-![Diagrama de flujo](./public/image.png)
+![Diagrama de flujo](./public/Diagrama_SCB.png)
 
 # Desarrollo de las pruebas de escritorio
 
