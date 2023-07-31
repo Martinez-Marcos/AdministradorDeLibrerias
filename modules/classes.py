@@ -68,12 +68,10 @@ class Library:
         return self.__books
     
     @books.setter
-    def books(self, book):
-        self.__books.append(book)
-
     def add_book(self, book):
         self.__books.append(book)
     
+    @books.deleter
     def remove_book(self, book):
         self.__books.remove(book)
     

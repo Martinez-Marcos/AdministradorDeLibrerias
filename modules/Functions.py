@@ -128,7 +128,7 @@ def register_book(your_library):
         print("Estado del libro:\n1- Nuevo\n2- Bien\n3- Mal")
         condition = input()
         
-        while not condition or int(condition) not in [1,2,3]:
+        while not condition or condition not in ["1","2","3"]:
             condition = input().strip()
         condition = int(condition)
 

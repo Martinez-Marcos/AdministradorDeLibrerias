@@ -2,9 +2,6 @@
 from modules import Functions as f
 from modules import classes as c
 
-
-
-
 def main():
     # Define Variable y constantes
     op = {
