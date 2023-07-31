@@ -1,7 +1,7 @@
 # Proyecto Integral N°2
 El presente documento, es el **Proyecto Integral N°2** de la ***Tecnicatura Universitaria en Sistemas Informáticos*** del ***C.U.D.I***. 
 - Materia: Programación 2 & Laboratorio 2
-- Autores: Pablo Esteban Velazques Montiel, Martinez Marcos
+- Autores: Pablo Esteban Velasquez Montiel, Martinez Marcos
 
 # Necesidad a satisfacer:
 A petición de muchos clientes en cuanto a su necesidad de poder controlar sus libros dentro de sus bibliotecas, permitiendoles ver sus libros además de facilitar el trabajo de recambio dependiendo de su estado y de la compra de libros para su stock al ver cuantos libros tienen con el mismo nombre y/o el mismo author. 
