@@ -22,20 +22,21 @@ def error_msg():
 #REGISTRAR BIBLIOTECA
 def register_library():
     try:
-        name = input("Ingrese el nombre de su libreria: ")
-        location = input("Ingrese la ubicación de su libreria: ") 
+        name = input("Ingrese un nombre de su biblioteca: ")
+        location = input("Ingrese la ubicación de su biblioteca: ") 
         clear_window()
         while not name or not location:
             print("\t\tDebe completar todos los campos\n")
-            name = input("Ingrese el nombre de su libreria: ")
-            location = input("Ingrese la ubicación de su libreria: ") 
-            clear_window()
-
-        your_library = Library(name, location)
-        return { "msg": True, "payload": your_library}
+            name = input("Ingrese el nombre de su biblioteca: ")
+            location = input("Ingrese la ubicación de su biblioteca: ") 
     except:
         error_msg()
         return  { "msg": False }
+    
+    clear_window()
+
+    your_library = Library(name, location)
+    return { "msg": True, "payload": your_library}
 
 
 #MODIFICAR LIBRO
@@ -47,22 +48,26 @@ def modify_book(book, your_library):
         clear_window()
         print(f"\t\tBiblioteca {your_library.name}")
         print("\tModificar Libro:")
-        
-        print(f"Titulo anterior: {book.title}")
-        new_title = input("\nNuevo titulo: ")
-        while not new_title:  new_title = input()
+        try:
+            print(f"Titulo anterior: {book.title}")
+            new_title = input("\nNuevo titulo: ")
+            while not new_title:  new_title = input()
 
-        print(f"\nAutor anterior: {book.author}")
-        new_author = input("\nNuevo autor: ")
-        while not new_author:  new_author = input()
+            print(f"\nAutor anterior: {book.author}")
+            new_author = input("\nNuevo autor: ")
+            while not new_author:  new_author = input()
 
-        print(f"\nCondición anterior: {book.condition}")
-        print("\nSeleccione nueva condición:\n1- Nuevo\n2- Bien\n3- Mal")
-        new_condition = input() 
+            print(f"\nCondición anterior: {book.condition}")
+            print("\nSeleccione nueva condición:\n1- Nuevo\n2- Bien\n3- Mal")
+            new_condition = input() 
+            
+            while not new_condition or int(new_condition) not in [1,2,3]:
+                new_condition = input().strip()
+            new_condition = int(new_condition)
         
-        while not new_condition or new_condition not in ["1","2","3"]:
-            new_condition = input().strip()
-        new_condition = int(new_condition)
+        except:
+            error_msg()
+            break
 
         if new_condition == 1:
             new_condition = "Nuevo"
@@ -118,19 +123,22 @@ def register_book(your_library):
         clear_window()
         print(f"\t\tBiblioteca {your_library.name}")
         print("\tRegistrar libro")
+        try: 
+            title = input("Titulo: ")
+            while not title: title = input("Titulo: ")
 
-        title = input("Titulo: ")
-        while not title: title = input("Titulo: ")
+            author = input("Autor: ")
+            while not author: author = input("Ingrese un autor(desconocido/anónimo)\n Autor: ")
 
-        author = input("Autor: ")
-        while not author: author = input("Ingrese un autor(desconocido/anónimo)\n Autor: ")
-
-        print("Estado del libro:\n1- Nuevo\n2- Bien\n3- Mal")
-        condition = input()
-        
-        while not condition or condition not in ["1","2","3"]:
-            condition = input().strip()
-        condition = int(condition)
+            print("Estado del libro:\n1- Nuevo\n2- Bien\n3- Mal")
+            condition = input()
+            
+            while not condition or condition not in ["1","2","3"]:
+                condition = input().strip()
+            condition = int(condition)
+        except:
+            error_msg()
+            return False
 
         if condition == 1:
             condition = "Nuevo"
@@ -155,12 +163,15 @@ def register_book(your_library):
         print("\tRegistrar libro")
         print(f"Id del ultimo libro agregado: {id}\n(Se recomienda estampar o adjuntar en el libro físico de alguna manera)\n")
         print("1- Ingresar otro libro \n2- Mostrar libros agregados\n3-Menú principal")
-        op = input()
+        try:
+            op = input()
 
-        while not op or op not in ["1","2","3"]:
-                op = input().strip()
-        op = int(op)
-
+            while not op or op not in ["1","2","3"]:
+                    op = input().strip()
+            op = int(op)
+        except:
+            error_msg()
+            return False
         if op == 1:
             continue
         elif op == 2:
@@ -220,17 +231,13 @@ def search_for_id(id, your_library, action):
     if action: 
         print(f"\t\tBiblioteca {your_library.name}")
         print("\tBuscar libro/s:")
-        while not id :
-            id = input("ID: ").strip()
-        
-        while True:
-            try:
-                id = int(id)
-                break
-            except:
-                print("id debe ser un numero")
+        try:
+            while not id :
                 id = input("ID: ").strip()
-
+        except:
+            error_msg()
+            return
+        
     for book in your_library.books:
         if book.id == id:
             book = book
@@ -238,57 +245,56 @@ def search_for_id(id, your_library, action):
 
     if action:
         action(book, your_library)
-        return False
+        return 
 
     if book:
         show_book(book, your_library)
+        return
     else:
         print("\t\tNo se encontraron libros con el ID especificado.")
         wait_secons(2)
-        return False
+        return 
 
 #MOSTRAR UN LIBRO
 def show_book(book, your_library):
     while True:
+        clear_window()
+        print(f"\t\t{your_library}")
+        print("\tDetalles del Libro")
+        print(f"Titulo del Libro: {book.title}")
+        print(f"Autor del Libro: {book.author}")
+        print(f"Condición del Libro: {book.condition}")
+        print(f"ID: {book.id}")
+        print("1- Modificar libro \n2- Volver al menú")
         try:
-            clear_window()
-            print(f"\t\t{your_library}")
-            print("\tDetalles del Libro")
-            print(f"Titulo del Libro: {book.title}")
-            print(f"Autor del Libro: {book.author}")
-            print(f"Condición del Libro: {book.condition}")
-            print(f"ID: {book.id}")
-            print("1- Modificar libro \n2- Volver al menú")
             op = input()
             
-            while not op or op not in ["1","2"]:
+            while not op or int(op) not in [1,2]:
                     op = input().strip()
             op = int(op)
 
             if op == 1: op = modify_book(book, your_library)
             break
         except:
-            print("\tAh ocurrido un error, vuelva a intentar")
-            input("\tPrecione enter para continuar")
+            error_msg()
             break
 
 
 #MENU
 def show_menu(op, your_library):
     clear_window()
-    try:    
-        print(f"\t\tBiblioteca {your_library.name}")
-        print("\tMenu Principal")
+    print(f"\t\tBiblioteca {your_library.name}")
+    print("\tMenu Principal")
         
-        for i, element in enumerate(op):
-            print (f"{i+1}- {element} ")
+    for i, element in enumerate(op):
+        print (f"{i+1}- {element} ")
 
+    try:    
         op = input().strip()
 
-        while not op or op not in [str(numero) for numero in range(1,8)]:
+        while not op or int(op) not in range(1,8):
             op = input().strip()
         return int(op)
-    
     except:
         error_msg()
         return False
@@ -303,17 +309,21 @@ def show_result_menu(results_search, your_library):
         print(f"{i+1}- {book}")
 
     print(f"{len(results_search)+1}- Menú principal")
-    op = input()
-    
-    while not op or op not in [str(numero) for numero in range(1,len(results_search)+2)]:
-            op = input().strip()
-    op = int(op)
+    try:
+        op = input().strip()
+        
+        while not op or int(op) not in range(1,len(results_search)+2):
+                op = input().strip()
+        op = int(op)
+    except:
+        error_msg()
+        return False
 
     if op == len(results_search)+1:
         return False
     else:
         show_book(results_search[op-1], your_library)
-        return False
+        return
 
 #AGREGAR FILTROS    
 def add_filters(your_library):
@@ -337,14 +347,8 @@ def add_filters(your_library):
         condition = ""
 
         if id:
-            while True:
-                try:
-                    id = int(id)
-                    break
-                except:
-                    print("id debe ser un numero")
-                    id = input("ID: ").strip()
-
+            while not id:
+                id = int(input("ID: ").strip())
             return {"title": title, "author": author,"id": id, "condition": condition }
         else:
             title = input("Titulo: ")
@@ -352,4 +356,5 @@ def add_filters(your_library):
             return {"title": title, "author": author,"id": id, "condition": condition }
 
     except:
-        error_msg()   
+        error_msg()
+        return False

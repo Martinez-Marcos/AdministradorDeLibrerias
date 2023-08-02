@@ -4,7 +4,7 @@ El presente documento, es el **Proyecto Integral N°2** de la ***Tecnicatura Uni
 - Autores: Pablo Esteban Velasquez Montiel, Martinez Marcos
 
 # Necesidad a satisfacer:
-A petición de muchos clientes en cuanto a su necesidad de poder controlar sus libros dentro de sus bibliotecas, permitiendoles ver sus libros además de facilitar el trabajo de recambio dependiendo de su estado y de la compra de libros para su stock al ver cuantos libros tienen con el mismo nombre y/o el mismo author. 
+A petición de muchos clientes en cuanto a su necesidad de poder controlar sus libros dentro de sus bibliotecas, permitiendoles ver sus libros además de facilitar el trabajo de recambio dependiendo de su estado y de la compra de libros para su stock al ver que libros tienen por nombre o por autor.
 
 # Análisis y solución:
 Hemos realizado un análisis de lo necesario dentro del programa (acciones posibles) a saber:
