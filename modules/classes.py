@@ -71,7 +71,9 @@ class Library:
     def add_book(self, book):
         self.__books.append(book)
     
-    @books.deleter
+    def add_book(self, book):
+        self.__books.append(book)
+
     def remove_book(self, book):
         self.__books.remove(book)
     

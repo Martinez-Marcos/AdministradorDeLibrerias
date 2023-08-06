@@ -24,25 +24,21 @@ def register_library():
     try:
         name = input("Ingrese un nombre de su biblioteca: ")
         location = input("Ingrese la ubicación de su biblioteca: ") 
-        clear_window()
         while not name or not location:
+            clear_window()
             print("\t\tDebe completar todos los campos\n")
             name = input("Ingrese el nombre de su biblioteca: ")
             location = input("Ingrese la ubicación de su biblioteca: ") 
     except:
         error_msg()
         return  { "msg": False }
-    
-    clear_window()
 
     your_library = Library(name, location)
     return { "msg": True, "payload": your_library}
 
-
 #MODIFICAR LIBRO
 def modify_book(book, your_library):
     clear_window()
-    
     
     while True:
         clear_window()
@@ -50,55 +46,55 @@ def modify_book(book, your_library):
         print("\tModificar Libro:")
         try:
             print(f"Titulo anterior: {book.title}")
-            new_title = input("\nNuevo titulo: ")
-            while not new_title:  new_title = input()
+            title = input("\nNuevo titulo: ")
+            while not title:  title = input()
 
             print(f"\nAutor anterior: {book.author}")
-            new_author = input("\nNuevo autor: ")
-            while not new_author:  new_author = input()
+            author = input("\nNuevo autor: ")
+            while not author:  author = input()
 
             print(f"\nCondición anterior: {book.condition}")
             print("\nSeleccione nueva condición:\n1- Nuevo\n2- Bien\n3- Mal")
-            new_condition = input() 
+            condition = input() 
             
-            while not new_condition or int(new_condition) not in [1,2,3]:
-                new_condition = input().strip()
-            new_condition = int(new_condition)
+            while not condition or int(condition) not in [1,2,3]:
+                condition = input().strip()
+            condition = int(condition)
         
         except:
             error_msg()
             break
 
-        if new_condition == 1:
-            new_condition = "Nuevo"
-        elif new_condition == 2:
-            new_condition = "Bien"
-        elif new_condition == 3:
-            new_condition = "Mal"
+        if condition == 1:
+            condition = "Nuevo"
+        elif condition == 2:
+            condition = "Bien"
+        elif condition == 3:
+            condition = "Mal"
 
         #Modificando libro
         clear_window()
         print("\tModificado..")
         wait_secons(0.5)
-        book.title = new_title
-        book.author = new_author
-        book.condition = new_condition
+        book.title = title
+        book.author = author
+        book.condition = condition
         print("\tLibro modificado.")
         wait_secons(2)
         #finaliza modificación
 
         
-        carry_on = show_book(book, your_library)
-        if not carry_on: break
+        show_book(book, your_library)
+        break
 
 #ELIMINAR LIBRO
-def delete_book(del_book,your_library):
+def delete_book(book,your_library):
     clear_window()
     print("Eliminando libro..")
 
-    for book in your_library.books:
-        if book.id == del_book.id:
-            your_library.remove_book(book)
+    for element in your_library.books:
+        if element.id == book.id:
+            your_library.remove_book(element)
             break
     else:
         print("No se a podido eliminar, revise el ID.")
@@ -107,11 +103,8 @@ def delete_book(del_book,your_library):
         return
     print("Libro eliminado.")
     wait_secons(2)
-    clear_window()
     return
     
-    
-
 #REGISTRAR LIBRO
 def register_book(your_library):
     books =[]
@@ -131,9 +124,9 @@ def register_book(your_library):
             while not author: author = input("Ingrese un autor(desconocido/anónimo)\n Autor: ")
 
             print("Estado del libro:\n1- Nuevo\n2- Bien\n3- Mal")
-            condition = input()
+            condition = input().strip()
             
-            while not condition or condition not in ["1","2","3"]:
+            while not condition or int(condition) not in [1,2,3]:
                 condition = input().strip()
             condition = int(condition)
         except:
@@ -166,12 +159,13 @@ def register_book(your_library):
         try:
             op = input()
 
-            while not op or op not in ["1","2","3"]:
+            while not op or int(op) not in [1,2,3]:
                     op = input().strip()
             op = int(op)
         except:
             error_msg()
             return False
+        
         if op == 1:
             continue
         elif op == 2:
@@ -234,13 +228,14 @@ def search_for_id(id, your_library, action):
         try:
             while not id :
                 id = input("ID: ").strip()
+            id = int(id)
         except:
             error_msg()
             return
         
-    for book in your_library.books:
-        if book.id == id:
-            book = book
+    for element in your_library.books:
+        if element.id == id:
+            book = element
             break
 
     if action:
@@ -249,17 +244,16 @@ def search_for_id(id, your_library, action):
 
     if book:
         show_book(book, your_library)
-        return
     else:
         print("\t\tNo se encontraron libros con el ID especificado.")
         wait_secons(2)
-        return 
+    return 
 
 #MOSTRAR UN LIBRO
 def show_book(book, your_library):
     while True:
         clear_window()
-        print(f"\t\t{your_library}")
+        print(f"\t\tBiblioteca {your_library.name}")
         print("\tDetalles del Libro")
         print(f"Titulo del Libro: {book.title}")
         print(f"Autor del Libro: {book.author}")
@@ -273,11 +267,10 @@ def show_book(book, your_library):
                     op = input().strip()
             op = int(op)
 
-            if op == 1: op = modify_book(book, your_library)
-            break
+            if op == 1: modify_book(book, your_library)
         except:
             error_msg()
-            break
+        break
 
 
 #MENU
@@ -347,8 +340,7 @@ def add_filters(your_library):
         condition = ""
 
         if id:
-            while not id:
-                id = int(input("ID: ").strip())
+            id = int(id)
             return {"title": title, "author": author,"id": id, "condition": condition }
         else:
             title = input("Titulo: ")

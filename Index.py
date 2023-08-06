@@ -1,6 +1,5 @@
 #importa clases y funciones internas
 from modules import Functions as f
-from modules import classes as c
 
 def main():
     # Define Variable y constantes
@@ -17,13 +16,13 @@ def main():
     print("\t\tBienvenido a S.C.B. (Sistema de Control para Bibliotecas)\n")
     
     #Inicia Registro
-    print('\tVamos a registrar su biblioteca')
+    print("\tVamos a registrar su biblioteca")
     register =  f.register_library()
 
     while not register["msg"]:
-        f.error_msg()
         register = f.register_library()
 
+    f.clear_window()
     your_library = register["payload"]
     print('\tRegistro completado')
     f.wait_secons(1)
@@ -35,7 +34,7 @@ def main():
         if (opcion == op["Ver libros"]):
             f.search_books("all",your_library)
             
-        elif (opcion == op['Buscar libro/s']):
+        elif (opcion == op["Buscar libro/s"]):
             filters = f.add_filters(your_library)
 
             if filters and filters["id"]:
